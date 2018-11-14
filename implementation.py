@@ -51,9 +51,15 @@ class CarDynamics(GenericKinematicsSE2):
         """
         check_isinstance(commands, CarCommands)
 
-        # Your code comes here!
-        linear = [0,0]
-        angular = 0
+        # Compute longitudinal velocity
+        u = commands.linear_velocity
+
+        # Constrain lateral velocity and create list
+        linear = [u, 0]
+
+        # Compute angular velocity from car geometry and command
+        angular = u / (self.parameters.wheel_distance * math.tan(commands.steering_angle))
+
         # represent this as se(2)
         commands_se2 = geo.se2_from_linear_angular(linear, angular)
 
