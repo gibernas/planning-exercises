@@ -58,8 +58,8 @@ class CarDynamics(GenericKinematicsSE2):
         linear = [u, 0]
 
         # Compute angular velocity from car geometry and command
-        angular = u / (self.parameters.wheel_distance * math.tan(commands.steering_angle))
-
+        angular = u / self.parameters.wheel_distance * math.tan(
+            commands.steering_angle)
         # represent this as se(2)
         commands_se2 = geo.se2_from_linear_angular(linear, angular)
 
