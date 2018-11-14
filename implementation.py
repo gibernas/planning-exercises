@@ -3,6 +3,7 @@ from duckietown_serialization_ds1 import Serializable
 from contracts import check_isinstance
 import geometry as geo
 import numpy as np
+import math
 
 class CarCommands(Serializable):
     '''
